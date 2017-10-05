@@ -13,7 +13,39 @@
 
     console.log(array[1].length);
 
-    // GoogleMapAPI
+  // GoogleMapAPI
+    var latlng = new google.maps.LatLng(35.624650, 139.429159);
+    var myOptions = {
+      zoom: 18, // 拡大比率
+      center: latlng, // マップの中心位置
+      mapTypeId: google.maps.MapTypeId.ROADMAP // 表示タイプの指定（衛生写真等に変えられる）
+    };
+    var map = new google.maps.Map(document.getElementById('map'), myOptions);
 
+  // オリジナルのアイコンを設定
+     var icon = new google.maps.MarkerImage('/images/map_icon.png',
+     new google.maps.Size(50,59), // アイコンサイズ
+     new google.maps.Point(0,0),  // (origin)アイコン画像表示の起点
+     new google.maps.Point(25,60) // (anchor)アイコン画像のどの座標を指定した緯度経度にあてるか　
+     );
+    var markerOptions = {
+     position: latlng,
+     map: map,
+     icon: icon,
+     title: 'サンリオピューロランド'
+    };
+    var marker = new google.maps.Marker(markerOptions);
+
+   // 吹き出しを作成
+     var contentString = '<h3 class="map_title">サンリオピューロランド</h3>' +
+                         '<p class="map_comment">〒206-8588 東京都多摩市落合1丁目31</p>';
+     var infowindow = new google.maps.InfoWindow({
+         content: contentString  // 吹き出し内コメント
+      });
+
+    //アイコンをクリックしたら吹き出しが表示
+      google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map,marker);
+      });
 
 })(jQuery);
