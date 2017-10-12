@@ -36,24 +36,6 @@
     };
     var marker = new google.maps.Marker(markerOptions);
 
-    var markerData = [ // マーカーを立てる場所名・緯度・経度
-      {
-           name: 'サンリオピューロランド',
-           lat: 35.624662,
-            lng: 139.429170
-     }, {
-            name: 'ハーモニーランド',
-         lat: 33.400167,
-            lng: 131.546822
-     }, {
-            name: 'サンリオショップ名古屋ゲートタワーモール店',
-         lat: 35.172233,
-          lng: 136.882388,
-          icon: 'tam.png' // マーカーの画像を変更
-        }
-    ];
-    
-
    // 吹き出しを作成
      var contentString = '<h3 class="map_title">サンリオピューロランド</h3>' +
                          '<p class="map_comment">〒206-8588 東京都多摩市落合1丁目31</p>';
