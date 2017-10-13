@@ -30,7 +30,7 @@
           lng: 131.546822,
           icon: '/images/map_icon.png', // マーカーの画像を変更
      }, {
-            name: 'サンリオショップ名古屋ゲートタワーモール店',
+          name: 'サンリオショップ名古屋ゲートタワーモール店',
           lat: 35.172233,
           lng: 136.882388
         }
@@ -49,13 +49,13 @@
       markerEvent(i); // マーカーにクリックイベントを追加
      }
 
-     marker[0].setOptions({// サンリオピューロランドのマーカーのオプション設定
+     marker[0].setOptions({// サンリオピューロランド（1番めの配列）のマーカーのオプション設定
          icon: {
           url: markerData[0]['icon']// マーカーの画像を変更
         }
      });
 
-     marker[1].setOptions({// サンリオピューロランドのマーカーのオプション設定
+     marker[1].setOptions({// ハーモニーランド（2番めの配列）のマーカーのオプション設定
          icon: {
           url: markerData[0]['icon']// マーカーの画像を変更
         }
