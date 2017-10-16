@@ -7,11 +7,25 @@
     <link href="styles/main.css" rel="stylesheet">
 </head>
 <body>
-<h1 class="heading-01">practice JavaScript</h1>
-<div id="map"></div>
+<div class="contents-wrapper">
+  <h1 class="heading-01">practice JavaScript</h1>
+  <div class="address-form">
+    <form>
+      <input type="text" value="サンリオピューロランド" id="address">
+      <input type="button" value="地図検索" id="button">
+
+      <ul class="tab">
+        <li>全て</li>
+        <li>テーマパーク</li>
+        <li>ギフトゲート</li>
+      </ul>
+    </form>
+  </div>
+  <div id="map"></div>
+</div>
 
 <script src="scripts/jquery-3.2.1.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAV0P72eetK6-0U5ND0J51dWoPOwgmgKw"></script>
-<script src="scripts/main-03.js"></script>
+<script src="scripts/main-04.js"></script>
 </body>
 </html>
