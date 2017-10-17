@@ -46,10 +46,6 @@
         });
         markerEvent(i); // マーカーにクリックイベントを追加
 
-        $('.tab li').on('click',function(){
-          console.log("park");
-        });
-
        }
     });
      function markerEvent(i) {
@@ -63,6 +59,42 @@
        function codeAddress(address) {
          // google.maps.Geocoder()コンストラクタのインスタンスを生成
          var geocoder = new google.maps.Geocoder();
+         map = new google.maps.Map(document.getElementById('map'),{
+           zoom: 16, // 拡大比率
+           center: latlng, // マップの中心位置
+           mapTypeId: google.maps.MapTypeId.ROADMAP // 表示タイプの指定（衛生写真等に変えられる）
+         });
+
+         $.getJSON("scripts/data.json", function(json){
+           for (var i = 0; i <= json.length-1; i++) {
+             data.push(
+                 {
+                   'name': json[i].name,
+                   'lat': json[i].lat,
+                   'lng': json[i].lng,
+                   'icon': json[i].icon,
+                   'type': json[i].type
+                 }
+               );
+             };
+             for (var i = 0; i < data.length; i++) {
+               markerLatLng = new google.maps.LatLng({lat: json[i]['lat'], lng: json[i]['lng']}); // 緯度経度のデータ作成
+               marker[i] = new google.maps.Marker({ // マーカーの追加
+               position: markerLatLng, // マーカーを立てる位置を指定
+               map: map, // マーカーを立てる地図を指定
+               icon: {
+                 url: json[i]['icon']// マーカーの画像を変更
+              }
+             });
+
+             infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+                content: '<div class="ballon_content">' + json[i]['content'] + '</div>' // 吹き出しに表示する内容
+             });
+             markerEvent(i); // マーカーにクリックイベントを追加
+
+            }
+         });
+
          // geocoder.geocode()メソッドを実行
          geocoder.geocode( { 'address': address}, function(results, status) {
 
@@ -76,7 +108,6 @@
        }
        return {
          getAddress: function() {
-           console.log(address);
            // ボタンに指定したid要素を取得
            var button = document.getElementById("button");
            // ボタンが押された時の処理

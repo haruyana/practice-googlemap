@@ -13,13 +13,13 @@
     <form>
       <input type="text" value="サンリオピューロランド" id="address">
       <input type="button" value="地図検索" id="button">
-
-      <ul class="tab">
-        <li>全て</li>
-        <li>テーマパーク</li>
-        <li>ギフトゲート</li>
-      </ul>
     </form>
+
+    <div class="filter_tag">
+      <input type="checkbox" name="tag" value="全て" id="chk01"><label for="chk01">全て</label>
+      <input type="checkbox" name="tag" value="テーマパーク" id="chk02"><label for="テーマパーク">鳥類</label>
+      <input type="checkbox" name="tag" value="ギフトゲート" id="chk03"><label for="chk03">ギフトゲート</label>
+    </div>
   </div>
   <div id="map"></div>
 </div>
