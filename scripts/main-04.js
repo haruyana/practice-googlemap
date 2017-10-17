@@ -18,6 +18,8 @@
     var icon = [];
     var infoWindow = [];
     var type = [];
+    var infoWindow = [];
+    var currentInfoWindow = null;
 
     $.getJSON("scripts/data.json", function(json){
       for (var i = 0; i <= json.length-1; i++) {
@@ -50,7 +52,11 @@
     });
      function markerEvent(i) {
          marker[i].addListener('click', function() { // マーカーをクリックしたとき
+           if (currentInfoWindow) {
+             currentInfoWindow.close(); // 他の情報ウィンドウが開いていたら閉じる
+           }
            infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+           currentInfoWindow = infoWindow[i];
        });
      }
 
